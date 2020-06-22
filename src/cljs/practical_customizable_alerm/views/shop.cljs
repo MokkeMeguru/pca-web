@@ -53,8 +53,9 @@
     [:div.container
      {:key "model-item"
       :style {:padding-bottom "7rem"}}
-     [:h2.sub-title {:style {:text-indent "5rem"}} "アイテム"]
-     [:div.columns
+     [:div.columns.my-2
+      [:h2.sub-title {:style {:text-indent "5rem" :margin-bottom "3rem"}} "アイテム"]]
+     [:div.columns.my-2.mx-2
       [:div.column.is-1.subarrow
        {:style {:margin "auto"}}
        right-arrow]
@@ -72,7 +73,8 @@
 (defn model-charactor-flex-container []
   [:div.bd-main.page
    [:div.bd-main-container.container
-    [:h2.sub-title {:style {:text-indent "5rem" :margin-bottom "5rem"}} "キャラクター"]
+    [:div.container
+     [:h2.sub-title {:style {:text-indent "5rem" :margin-bottom "3rem"}} "キャラクター"]]
     [:div.container.mx-5>div.columns.is-centered>div.column.is-10
      (map
       (fn [{:keys [id title body]}]

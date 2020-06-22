@@ -104,31 +104,30 @@
       "リンク"]]}])
 
 (def voice-list
-  [{:id "basic-code"
+  [{:id "akari-voice-01"
     :title
-    [:h2.sub-title.py-3 "ベーシックなCコード進行"]
+    [:h2.sub-title.py-3 "紲星あかり 目覚ましボイスサンプル 01"]
     :body
     [:div {:style {:text-align "center"}}
-     [:p "ベーシックなCコード進行です。詞とかないです"]
-     [:a.sub-title {:href "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fbasic-code.wav?alt=media&token=eabf88cf-3428-4642-90f9-293763071bcd"}
+     [:a.sub-title
+      {:href
+       "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fmezamasi-sample01.wav?alt=media&token=a4b1cfe1-9d22-43a4-977b-d3fb5bda1643"}
       "リンク"]]}
-   {:id "pretender"
+   {:id "akari-voice-02"
     :title
-    [:h2.sub-title.py-3 "Pretender Mix with NEUTORINO"]
+    [:h2.sub-title.py-3 "紲星あかり 目覚ましボイスサンプル 02"]
     :body
     [:div {:style {:text-align "center"}}
-     [:p "Pretender を NEUTORINO のきりたんに歌わせてみたものです"]
-     [:p "NEUTORINO へ入力した musicxml は"
-      [:a {:href "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fpretender-main.musicxml?alt=media&token=ec89ece7-0171-4e85-a2f0-16cff2115ca1"}
-       "こちら"]
-      "になります"]
-     [:a.sub-title {:href "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fpretender-main_syn.wav?alt=media&token=9069b4e6-6a3e-4ca6-ba6d-8a66af861abf"}
+     [:a.sub-title
+      {:href
+       "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fmezamasi-sample02.wav?alt=media&token=b1c06ca5-5b3c-4b3e-bc9a-906c0eab16d7"}
       "リンク"]]}
-   {:id "pretender-with-piano"
+   {:id "akari-voice-03"
     :title
-    [:h2.sub-title.py-3 "Pretender Mix with NEUTORINO x Ardour"]
+    [:h2.sub-title.py-3 "紲星あかり 目覚ましボイスサンプル 03"]
     :body
     [:div {:style {:text-align "center"}}
-     [:p "Pretender を NEUTORINO のきりたんに歌わせてみたものにピアノなどの伴奏を追加したものです"]
-     [:a.sub-title {:href "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fpretender-with-piano.ogg?alt=media&token=d2fe752f-063f-4125-ba4e-43c4500f50d4"}
+     [:a.sub-title
+      {:href
+       "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fmezamasi-sample03.wav?alt=media&token=7bd1f801-939e-48b9-a936-4808b5d17815"}
       "リンク"]]}])

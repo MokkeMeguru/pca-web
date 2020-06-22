@@ -21,6 +21,7 @@
    {:display "flex"
     :flex-direction "column"
     :min-height "100vh"
+    :background-color "#f9f9f9"
     :font-family "'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif"
     ;; :font-size "calc(112.5% + 0.5vw)"
     }]
@@ -33,6 +34,7 @@
     :margin-top "auto"
     :padding-top "1rem"
     :padding-bottom "1rem"
+    :border-top "0.2rem solid lightgray"
     :z-index 1}]
   [:.navbar-item
    {:display "flex"}]

@@ -39,7 +39,7 @@
     (fn [id title body]
       (let [open? (get @(rf/subscribe [::subs/accordion-toggle]) id false)
             child-height (:child-height @state)]
-        [:article.message
+        [:article.message.my-2.mx-2
          [:div.message-header
           (when open? {:style {:background-color "#a3a3a3"}})
           [:div.accordion-header.toggle
