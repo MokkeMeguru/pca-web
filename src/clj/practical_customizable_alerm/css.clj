@@ -72,13 +72,15 @@
     :border-bottom "solid 0.5rem gray"
     :padding-right "5rem"}]
   [:.link-button:hover
-   {:background "#414141"}]
+   {:background-color "#9b9b9b"
+    :box-shadow "0px 8px 8px rgba(0, 0, 0, 0.05)"
+    }]
+  [:.link-button ".link-button:hover::before" ".link-button:hover::after"
+   {:transition "all 0.3s"}]
   [:.link-button
    ;;  Rectangle 2
    {:position "flex"
     ;; :width "279px"
-
-    
     :background "#575757"
     ;; :border "1px solid #000000"
     :boxsizing "border-box"
@@ -90,14 +92,18 @@
     {:color "white"
      }]
    [:a:hover
-    {:color "gray"}]
-   ]
+    {:color "lightgray"}]]
+  [:.modal-content ":.modal-content::before" ":.modal-content::after"
+   {:transition "all 0.5s"}]
   [:.accordion-header
    {:text-indent "1rem"}]
   [:.panel-body
    [:h2 {:text-indent "1rem"}]
    [:p {:text-indent "3rem"
         :font-size "calc(112.5% + 0.5vw)"}]]
+  [:.modal
+   {:animation "fadeIn"
+    :animation-duration "0.2s"}]
   [:.is-close
    {:max-height 0
     :overflow "hidden"

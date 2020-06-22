@@ -27,26 +27,26 @@
               :src (:img item-info)
               :style {:max-width "400px"
                       :display "inline-block"}}]
-       (when @open?
-         [:div.modal.is-active
-          {:on-click #(rf/dispatch [::events/close-shop-modal! (:id item-info)])}
-          [:div.modal-background
-           {:style {:z-index -1}}]
-          [:div.modal-content
-           {:style  {:border-radius "0.5rem"}}
-           [:div.card
-            [:div.card-header
-             [:p.card-header-title.sub-title (:title item-info)]]
-            [:div.card-image.my-5 {:style {:display "block" :text-align "center"}}
-             [:figure {:style {:align-item "center"}}
-              [:img {:src (:img item-info)}]]]
-            [:div.card-content
-             [:div.media
-              [:div.media-content
-               [:p.sub-title (:detail-title item-info)]
-               (:detail-description item-info)
-               [:div.content
-                (:link item-info)]]]]]]])])))
+       [:div.modal
+        {:on-click #(rf/dispatch [::events/close-shop-modal! (:id item-info)])
+         :class (if @open? "is-active")}
+        [:div.modal-background
+         {:style {:z-index -1}}]
+        [:div.modal-content
+         {:style  {:border-radius "0.5rem"}}
+         [:div.card
+          [:div.card-header
+           [:p.card-header-title.sub-title (:title item-info)]]
+          [:div.card-image.my-5 {:style {:display "block" :text-align "center"}}
+           [:figure {:style {:align-item "center"}}
+            [:img {:src (:img item-info)}]]]
+          [:div.card-content
+           [:div.media
+            [:div.media-content
+             [:p.sub-title (:detail-title item-info)]
+             (:detail-description item-info)
+             [:div.content
+              (:link item-info)]]]]]]]])))
 
 (defn model-item-flex-container []
   (let [modals (rf/subscribe [::subs/shop-modals])]

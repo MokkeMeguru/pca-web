@@ -4,7 +4,7 @@
   {:title [:h1.title "よくある質問"]
    :contents
    [:div.container.px-5.py-5
-    [:p "以下から見つからない場合は、 meguru.mokke@gmail.com へお問い合わせ下さい"]]})
+    [:p "以下から見つからない場合は、"  [:a {:href "mailto:meguru.mokke@gmail.com"} "meguru.mokke@gmail.com"] "へお問い合わせ頂くか、以下のお問い合わせフォームをご利用下さい"]]})
 
 (def help-list
   [{:id "sound-source-access"

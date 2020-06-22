@@ -4,7 +4,7 @@
   {:title [:h1.title>span.sec-title "PCA # とは"]
    :contents [:div.container.px-5.py-5
               [:p
-               "PCA (Personal Customizable Alerm) は"]
+               "PCA (Personal Customizable Alarm) は"]
               [:p "様々な分野のクリエイターの技術を組み合わせて"]
               [:p "1つのアラームを作る基盤アプリケーションです"]
               [:br]
