@@ -18,17 +18,14 @@
   ["/" ;; (str conf/hashrouter-base "/")
    [""
     {:name :routes/home
-     :view vhome/page
-     :controllers
-     [{:start (fn []
-                (.log js/console "enter home"))}]
-     }]
+     :view vhome/page}]
    ["about"
     {:name :routes/about
      :view vabout/page
      :controllers
      [{:start (fn []
-                (.log js/console "enter about"))}]
+                (.log js/console "enter about"))
+       }]
      }]
    ["shops/"
     ["model"
@@ -43,6 +40,7 @@
       :view vshop/page
       :controllers
       [{:start (fn []
+                 (.scrollTo js/window 0 0)
                  (rf/dispatch [::events/viewing-shop "song"]))}]
       }]
     ["voice"
@@ -51,10 +49,15 @@
       :view vshop/page
       :controllers
       [{:start (fn []
+                 (.scrollTo js/window 0 0)
                  (rf/dispatch [::events/viewing-shop "voice"]))}]
       }]]
    {:controllers
-    [{:stop
+    [{:start
+      (fn []
+        (println "entering how")
+        (.scrollTo js/window 0 0))}
+     {:stop
       (fn []
         (rf/dispatch [::events/reset-accordion]))}]}])
 

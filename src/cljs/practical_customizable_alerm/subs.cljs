@@ -5,6 +5,7 @@
 (re-frame/reg-sub
  :current-route
  (fn [db]
+   (.scrollTo js/window 0 0)
    (:current-route db)))
 
 

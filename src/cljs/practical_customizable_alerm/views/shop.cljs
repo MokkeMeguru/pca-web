@@ -111,6 +111,7 @@
 
 (defn page []
   (let [viewing-shop (rf/subscribe [::subs/viewing-shop])]
+    
    [:div.container.page
     [shop-nav]
     [shop-header]
