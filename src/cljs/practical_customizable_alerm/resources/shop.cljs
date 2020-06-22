@@ -1,4 +1,5 @@
-(ns practical-customizable-alerm.resources.shop)
+(ns practical-customizable-alerm.resources.shop
+  (:require [practical-customizable-alerm.config :as conf]))
 
 (def shop
   {:title [:h1.title>span.sec-title "公式素材"]
@@ -25,26 +26,26 @@
              }]
      ]]
    :link {:text "公式素材集 →"
-          :url "/shops/model"}
+          :url (str "#/" "shops/model")}
    })
 
 
 (def shop-items
   [{:id "guitar-1"
     :title "ギター 1"
-    :img "/img/acoustic-guitar.png"
+    :img (str conf/hashrouter-base "img/acoustic-guitar.png")
     :detail-title "ベーシック・ギター"
     :detail-description [:p "ベーシックなギターのサンプル"]
     :link [:a {:href "https://ja.wikipedia.org/wiki/%E3%82%AE%E3%82%BF%E3%83%BC"} "モデルリンク"]}
    {:id "guitar-2"
     :title "ギター 2"
-    :img "/img/acoustic-guitar.png"
+    :img (str conf/hashrouter-base "img/acoustic-guitar.png")
     :detail-title "ベーシック・ギター"
     :detail-description [:p "ベーシックなギターのサンプル"]
     :link [:a {:href "https://ja.wikipedia.org/wiki/%E3%82%AE%E3%82%BF%E3%83%BC"} "モデルリンク"]}
    {:id "guitar-3"
     :title "ギター 3"
-    :img "/img/acoustic-guitar.png"
+    :img (str conf/hashrouter-base "img/acoustic-guitar.png")
     :detail-title "ベーシック・ギター"
     :detail-description [:p "ベーシックなギターのサンプル"]
     :link [:a {:href "https://ja.wikipedia.org/wiki/%E3%82%AE%E3%82%BF%E3%83%BC"} "モデルリンク"]}])
@@ -70,7 +71,7 @@
      [:p "本モデルは公式のものではありません。"]
      [:p [:a {:href "https://3d.nicovideo.jp/works/td39238"} "リンク元"]]
      [:figure
-      [:img {:src "/img/akari.png"}]]]}])
+      [:img {:src (str conf/hashrouter-base "img/akari.png")}]]]}])
 
 (def song-list
   [{:id "basic-code"

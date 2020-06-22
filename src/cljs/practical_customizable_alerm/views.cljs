@@ -2,6 +2,7 @@
   (:require
    [re-frame.core :as re-frame]
    [practical-customizable-alerm.subs :as subs]
+   [practical-customizable-alerm.config :as conf]
    ))
 
 (def home-svg
@@ -25,8 +26,13 @@
       {:role "navigation" :aria-label "main navigation" :style {:background-color "white"}}
       [:div.container>div.navbar-menu
        {:style {:align-items "center" :justify-content "space-around"}}
-       [:div.navbar-item.start [:a {:href "/"} home-svg]]
-       [:div.navbar-item.end [:a {:href "/about"} help-svg]]]]
+       [:div.navbar-item.start
+        [:a {:href "#/" ;; (str conf/hashrouter-base "/#/")
+             } home-svg]]
+       [:div.navbar-item.end
+        [:a {:href
+             "#/about" ;; (str conf/hashrouter-base "/#/" "about")
+             } help-svg]]]]
      [:div.container {:style {:margin-top "5.25rem"}}
       (when current-route
         [(-> current-route :data :view)])]]))

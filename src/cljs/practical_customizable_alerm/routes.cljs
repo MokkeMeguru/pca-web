@@ -4,6 +4,7 @@
    [reitit.coercion.malli :as remalli]
    [reitit.frontend :as ref]
    [reitit.frontend.easy :as resy]
+   [practical-customizable-alerm.config :as conf]
    [practical-customizable-alerm.events :as events]
    [practical-customizable-alerm.views.home :as vhome]
    [practical-customizable-alerm.views.about :as vabout]
@@ -14,13 +15,20 @@
 ;; Triggering navigation from events
 
 (def routes
-  ["/"
+  ["/" ;; (str conf/hashrouter-base "/")
    [""
     {:name :routes/home
-     :view vhome/page}]
+     :view vhome/page
+     :controllers
+     [{:start (fn []
+                (.log js/console "enter home"))}]
+     }]
    ["about"
     {:name :routes/about
      :view vabout/page
+     :controllers
+     [{:start (fn []
+                (.log js/console "enter about"))}]
      }]
    ["shops/"
     ["model"
@@ -55,13 +63,16 @@
    routes
    {:data {:coercion remalli/coercion}}))
 
+
+
 (defn on-navigate [new-match]
   (when new-match
     (rf/dispatch [:navigated new-match])))
 
 (defn init-routes! []
-  (js/console.log "initialize routes")
   (resy/start!
    router
    on-navigate
-   {:use-fragment false}))
+   {:use-fragment
+    true ;;false
+    }))

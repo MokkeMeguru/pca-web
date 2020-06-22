@@ -4,6 +4,7 @@
             [practical-customizable-alerm.events :as events]
             [practical-customizable-alerm.resources.shop :as rshop]
             [practical-customizable-alerm.views.utils :as vutils]
+            [practical-customizable-alerm.config :as conf]
             ))
 
 (def left-arrow
@@ -86,14 +87,20 @@
     [:div.breadcrumb.is-centered {:aria-label "breadcrumbs"}
      [:ul
       (if (= shop "model")
-        [:li.is-active>a.title {:href "/shops/model"} "3D モデル"]
-        [:li>a.title {:href "/shops/model"} "3D モデル"])
+        [:li.is-active>a.title
+         {:href (str conf/hashrouter-base "#/shops/model")} "3D モデル"]
+        [:li>a.title
+         {:href (str conf/hashrouter-base "#/shops/model")} "3D モデル"])
       (if (= shop "song")
-        [:li.is-active>a.title {:href "/shops/song"} "楽曲"]
-        [:li>a.title {:href "/shops/song"} "楽曲"])
+        [:li.is-active>a.title
+         {:href (str conf/hashrouter-base "#/shops/song")} "楽曲"]
+        [:li>a.title
+         {:href (str conf/hashrouter-base  "#/shops/song")} "楽曲"])
       (if (= shop "voice")
-        [:li.is-active>a.title {:href "/shops/voice"} "音声"]
-        [:li>a.title {:href "/shops/voice"} "音声"]
+        [:li.is-active>a.title
+         {:href (str conf/hashrouter-base "#/shops/voice")} "音声"]
+        [:li>a.title
+         {:href (str conf/hashrouter-base "#/shops/voice")} "音声"]
         )]]))
 
 (defn shop-header []
