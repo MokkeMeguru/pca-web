@@ -1,14 +1,13 @@
-[
-    "name": "pca-web",
-    "short_name": "PCAW",
-    "display": "standalone",
-    "Scope": "/pca-web/",
-    "start_utl": "./index.html",
-    "theme_color": "#2196f3",
-    "background_color": "#2196f3",
-    "icons": [
-
-            {
+{
+  "name": "pca-web",
+  "short_name": "PCAW",
+  "display": "standalone",
+  "Scope": "/pca-web/",
+  "start_utl": "./index.html",
+  "theme_color": "#2196f3",
+  "background_color": "#2196f3",
+  "icons": [
+    {
       "src": "images/icons/icon-72x72.png",
       "sizes": "72x72",
       "type": "image/png"
@@ -48,6 +47,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-
-    ]
-]
+  ]
+}

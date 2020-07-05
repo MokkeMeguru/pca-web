@@ -9,9 +9,15 @@
   }
 
 }
-.box {
-  margin-bottom: 1.5rem;
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
 }
+
 .page {
   animation-name: fadeIn;
   animation-duration: 1s;
@@ -23,20 +29,18 @@
   border-bottom: solid 0.3rem #dbdbdb;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background-color: #f9f9f9;
-  font-family: 'Hiragino Kaku Gothic Pro','ヒラギノ角ゴ Pro W3','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
-}
-
 .title {
   font-size: calc(200% + 0.5vw);
 }
 
 .sub-title {
   font-size: calc(150% + 0.5vw);
+}
+
+.sec-title {
+  line-height: 1.5;
+  border-bottom: solid 0.5rem gray;
+  padding-right: 5rem;
 }
 
 .footer {
@@ -73,6 +77,11 @@ body {
   margin-left: auto;
 }
 
+.navbar-item {
+  display: flex;
+  align-items: center;
+}
+
 .start {
   justify-content: flex-start;
 }
@@ -84,17 +93,6 @@ body {
 .end {
   justify-content: flex-end;
   margin-left: auto;
-}
-
-.navbar-item {
-  display: flex;
-  align-items: center;
-}
-
-.sec-title {
-  line-height: 1.5;
-  border-bottom: solid 0.5rem gray;
-  padding-right: 5rem;
 }
 
 .link-button:hover {
@@ -124,6 +122,11 @@ body {
   color: lightgray;
 }
 
+.modal {
+  animation: fadeIn;
+  animation-duration: 0.2s;
+}
+
 .modal-content, :.modal-content::before, :.modal-content::after {
   transition: all 0.5s;
 }
@@ -139,11 +142,6 @@ body {
 .panel-body p {
   text-indent: 3rem;
   font-size: calc(112.5% + 0.5vw);
-}
-
-.modal {
-  animation: fadeIn;
-  animation-duration: 0.2s;
 }
 
 .is-close {
