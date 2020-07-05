@@ -24,7 +24,8 @@
         contents
         (if link
           [:button.link-button
-           [:a {:href (:url link)}
+           [:a {:href (:url link)
+                :data-tooltip "Click to Copy"}
             (:text link)]])]])]])
 
 (defn section-handler [section-item]

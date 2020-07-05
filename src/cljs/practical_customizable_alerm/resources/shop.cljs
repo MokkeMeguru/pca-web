@@ -1,5 +1,22 @@
 (ns practical-customizable-alerm.resources.shop
-  (:require [practical-customizable-alerm.config :as conf]))
+  (:require [practical-customizable-alerm.config :as conf]
+            [reagent.core :as r]))
+
+(defn copy-to-clipboard [val]
+  (let [el (js/document.createElement "textarea")]
+    (set! (.-value el) val)
+    (.appendChild js/document.body el)
+    (.select el)
+    (js/document.execCommand "copy")
+    (.removeChild js/document.body el)))
+
+(defn copy-link-event [link]
+  (fn [event]
+    (do
+      (.stopPropagation event)
+      (copy-to-clipboard link)
+      (set! (.. event -target -text) "Copied!"))))
+
 
 (def shop
   {:title [:h1.title>span.sec-title "公式素材"]
@@ -36,29 +53,22 @@
     :img (str conf/hashrouter-base "img/acoustic-guitar.png")
     :detail-title "ベーシック・ギター"
     :detail-description [:p "ベーシックなギターのサンプル"]
-    :link [:a {:href "https://ja.wikipedia.org/wiki/%E3%82%AE%E3%82%BF%E3%83%BC"} "モデルリンク"]}
-   {:id "guitar-2"
-    :title "ギター 2"
-    :img (str conf/hashrouter-base "img/acoustic-guitar.png")
-    :detail-title "ベーシック・ギター"
-    :detail-description [:p "ベーシックなギターのサンプル"]
-    :link [:a {:href "https://ja.wikipedia.org/wiki/%E3%82%AE%E3%82%BF%E3%83%BC"} "モデルリンク"]}
-   {:id "guitar-3"
-    :title "ギター 3"
-    :img (str conf/hashrouter-base "img/acoustic-guitar.png")
-    :detail-title "ベーシック・ギター"
-    :detail-description [:p "ベーシックなギターのサンプル"]
-    :link [:a {:href "https://ja.wikipedia.org/wiki/%E3%82%AE%E3%82%BF%E3%83%BC"} "モデルリンク"]}])
+    }])
+
 
 (def character-list
   [{:id "hatsune-miku"
     :title
     [:h2.sub-title.py-3 "初音ミク (外部素材)"]
     :body
+      
     [:div {:style {:text-align "center"}}
      [:p "初音ミクの 3D モデル"]
      [:p "本モデルは公式のものではありません。"]
-     [:p [:a {:href "https://piapro.jp/t/0Hwp"} "リンク元"]]
+     [:p
+      [:a {:data-tooltip "Click to Copy"
+           :on-click (copy-link-event "https://piapro.jp/t/0Hwp")}
+       "リンク元(コピー)"]]
      [:figure
       [:img {:src "//cdn.piapro.jp/thumb_m/rf/rfd90tbmj7h7fzzd_20200608220237_0740_0500.png"}]]]
     }
@@ -69,9 +79,22 @@
     [:div {:style {:text-align "center"}}
      [:p "紲星あかりの 3D モデル"]
      [:p "本モデルは公式のものではありません。"]
-     [:p [:a {:href "https://3d.nicovideo.jp/works/td39238"} "リンク元"]]
+     [:p
+      [:a {:data-tooltip "Click to Copy"
+           :on-click (copy-link-event "https://3d.nicovideo.jp/works/td39238")}
+       "リンク元(コピー)"]]
      [:figure
       [:img {:src (str conf/hashrouter-base "img/akari.png")}]]]}])
+
+(defn audio-clip [url]
+  [:div.columns.is-vcentered
+   [:div.column.is-6>audio {:src url 
+                            :controls true}]
+   [:div.column.is-6>a.button
+    {:data-tooltip "Clip to Copy"
+     :on-click
+     (copy-link-event url)}
+    "リンク(コピー)"]])
 
 (def song-list
   [{:id "basic-code"
@@ -79,29 +102,31 @@
     [:h2.sub-title.py-3 "ベーシックなCコード進行"]
     :body
     [:div {:style {:text-align "center"}}
-     [:p "ベーシックなCコード進行です。詞とかないです"]
-     [:a.sub-title {:href "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fbasic-code.wav?alt=media&token=eabf88cf-3428-4642-90f9-293763071bcd"}
-      "リンク"]]}
+     [:div.columns>div.column>p "ベーシックなCコード進行です。詞とかないです"]
+     (audio-clip "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fbasic-code.wav?alt=media&token=eabf88cf-3428-4642-90f9-293763071bcd")]}
    {:id "pretender"
     :title
     [:h2.sub-title.py-3 "Pretender Mix with NEUTORINO"]
     :body
     [:div {:style {:text-align "center"}}
-     [:p "Pretender を NEUTORINO のきりたんに歌わせてみたものです"]
-     [:p "NEUTORINO へ入力した musicxml は"
-      [:a {:href "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fpretender-main.musicxml?alt=media&token=ec89ece7-0171-4e85-a2f0-16cff2115ca1"}
-       "こちら"]
-      "になります"]
-     [:a.sub-title {:href "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fpretender-main_syn.wav?alt=media&token=9069b4e6-6a3e-4ca6-ba6d-8a66af861abf"}
-      "リンク"]]}
+     [:div.columns>div.column
+      [:p "Pretender を NEUTORINO のきりたんに歌わせてみたものです"]
+      [:p "NEUTORINO へ入力した musicxml は"
+       [:a {:href
+            "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fpretender-main.musicxml?alt=media&token=ec89ece7-0171-4e85-a2f0-16cff2115ca1"}
+        "こちら"]
+       "になります"]]
+     (audio-clip  "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fpretender-main_syn.wav?alt=media&token=9069b4e6-6a3e-4ca6-ba6d-8a66af861abf")]}
    {:id "pretender-with-piano"
     :title
     [:h2.sub-title.py-3 "Pretender Mix with NEUTORINO x Ardour"]
     :body
     [:div {:style {:text-align "center"}}
-     [:p "Pretender を NEUTORINO のきりたんに歌わせてみたものにピアノなどの伴奏を追加したものです"]
-     [:a.sub-title {:href "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fpretender-with-piano.ogg?alt=media&token=d2fe752f-063f-4125-ba4e-43c4500f50d4"}
-      "リンク"]]}])
+     [:div.columns>div.column>p "Pretender を NEUTORINO のきりたんに歌わせてみたものにピアノなどの伴奏を追加したものです"]
+     (audio-clip "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fpretender-with-piano.ogg?alt=media&token=d2fe752f-063f-4125-ba4e-43c4500f50d4")]}
+   ;; TODO add item
+   ])
+
 
 (def voice-list
   [{:id "akari-voice-01"
@@ -109,25 +134,18 @@
     [:h2.sub-title.py-3 "紲星あかり 目覚ましボイスサンプル 01"]
     :body
     [:div {:style {:text-align "center"}}
-     [:a.sub-title
-      {:href
-       "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fmezamasi-sample01.wav?alt=media&token=a4b1cfe1-9d22-43a4-977b-d3fb5bda1643"}
-      "リンク"]]}
+     (audio-clip "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fmezamasi-sample01.wav?alt=media&token=a4b1cfe1-9d22-43a4-977b-d3fb5bda1643")]}
    {:id "akari-voice-02"
     :title
     [:h2.sub-title.py-3 "紲星あかり 目覚ましボイスサンプル 02"]
     :body
     [:div {:style {:text-align "center"}}
-     [:a.sub-title
-      {:href
-       "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fmezamasi-sample02.wav?alt=media&token=b1c06ca5-5b3c-4b3e-bc9a-906c0eab16d7"}
-      "リンク"]]}
+     (audio-clip "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fmezamasi-sample02.wav?alt=media&token=b1c06ca5-5b3c-4b3e-bc9a-906c0eab16d7")]}
    {:id "akari-voice-03"
     :title
     [:h2.sub-title.py-3 "紲星あかり 目覚ましボイスサンプル 03"]
     :body
     [:div {:style {:text-align "center"}}
-     [:a.sub-title
-      {:href
-       "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fmezamasi-sample03.wav?alt=media&token=7bd1f801-939e-48b9-a936-4808b5d17815"}
-      "リンク"]]}])
+     (audio-clip "https://firebasestorage.googleapis.com/v0/b/personalcustomizablealerm.appspot.com/o/official_sample%2Fmezamasi-sample03.wav?alt=media&token=7bd1f801-939e-48b9-a936-4808b5d17815")]
+    ;; TODO add item
+    }])

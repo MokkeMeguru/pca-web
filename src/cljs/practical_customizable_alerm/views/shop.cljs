@@ -8,19 +8,18 @@
             ))
 
 (def left-arrow
-  [:svg {:viewbox "0 0 59 56", :fill "none", :xmlns "http://www.w3.org/2000/svg"}
+  [:svg {:viewBox "0 0 59 56", :fill "none", :xmlns "http://www.w3.org/2000/svg"}
    [:path {:d "M20.0836 11.75L58.3336 33.8336L20.0836 55.9173L20.0836 11.75Z", :fill "#C4C4C4"}]])
 
 (def right-arrow
-  [:svg {:width "59", :height "57", :viewbox "0 0 59 57", :fill "none", :xmlns "http://www.w3.org/2000/svg"}
+  [:svg {:width "59", :height "57", :viewBox "0 0 59 57", :fill "none", :xmlns "http://www.w3.org/2000/svg"}
    [:path {:d "M39.1247 12.1335L38.3539 56.294L0.49515 33.5462L39.1247 12.1335Z", :fill "#C4C4C4"}]])
 
 (defn model-item [item-info modals]
   (let [open? (rf/subscribe [::subs/shop-modal (:id item-info)])]
     (fn []
       [:div.box
-       {:key (:id item-info)
-        :style {:max-width "unset"
+       {:style {:max-width "unset"
                 :display "inline-block"}}
        [:img {:on-click #(when-not (and (not open?) (zero? (apply + @modals)))
                            (rf/dispatch [::events/open-shop-modal! (:id item-info)]))
@@ -51,8 +50,7 @@
 (defn model-item-flex-container []
   (let [modals (rf/subscribe [::subs/shop-modals])]
     [:div.container
-     {:key "model-item"
-      :style {:padding-bottom "7rem"}}
+     {:style {:padding-bottom "7rem"}}
      [:div.columns.my-2
       [:h2.sub-title {:style {:text-indent "5rem" :margin-bottom "3rem"}} "アイテム"]]
      [:div.columns.my-2.mx-2
@@ -65,7 +63,9 @@
          {:overflow-y "hidden"
           :overflow-x "scroll"
           :white-space "nowrap"}}
-        (map (fn [item-info] [model-item item-info modals]) rshop/shop-items)]]
+        (map (fn [item-info]
+               ^{:key (:id item-info)}
+               [model-item item-info modals]) rshop/shop-items)]]
       [:div.column.is-1.subarrow
        {:style {:margin "auto"}}
        left-arrow]]]))
@@ -121,7 +121,7 @@
        [model-charactor-flex-container]])
     (when (= @viewing-shop "song")
       [:div.container
-       [:div.columns>column.is-10.my-5
+       [:div.columns>div.column.is-10.my-5
         {:style {:text-indent "5rem"}}
         [:p.sub-title "楽曲"]]
        [:div.columns.is-centered>div.column.is-10.my-5
@@ -133,7 +133,7 @@
          rshop/song-list)]])
     (when (= @viewing-shop "voice")
       [:div.container
-       [:div.columns>column.is-10.my-5
+       [:div.columns>div.column.is-10.my-5
         {:style {:text-indent "5rem"}}
         [:p.sub-title "音声"]]
        [:div.columns.is-centered>div.column.is-10.my-5

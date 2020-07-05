@@ -4,4 +4,7 @@
   {:name "re-frame"
    :accordion {}
    :shop-modals {}
-   :viewing-shop "model"})
+   :viewing-shop "model"
+   :raspihost ""
+   :sounds []
+   })
