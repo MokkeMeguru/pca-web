@@ -39,7 +39,7 @@ body {
 
 .sec-title {
   line-height: 1.5;
-  border-bottom: solid 0.5rem gray;
+  border-bottom: solid 0.5rem #78b771;
   padding-right: 5rem;
 }
 
@@ -79,6 +79,7 @@ body {
 
 .navbar-item {
   display: flex;
+  fill: gray;
   align-items: center;
 }
 
@@ -92,12 +93,12 @@ body {
 
 .end {
   justify-content: flex-end;
-  margin-left: auto;
 }
 
 .link-button:hover {
-  background-color: #9b9b9b;
+  background-color: #4f4c81;
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.05);
+  transform: scale(0.95);
 }
 
 .link-button, .link-button:hover::before, .link-button:hover::after {
@@ -106,7 +107,7 @@ body {
 
 .link-button {
   position: flex;
-  background: #575757;
+  background: #7b5e90;
   boxsizing: border-box;
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
   color: white;
@@ -148,6 +149,10 @@ body {
   max-height: 0;
   overflow: hidden;
   padding: 0;
+}
+
+.tabs a {
+  border: 0;
 }
 
 @media screen and (max-width: 800px) {
