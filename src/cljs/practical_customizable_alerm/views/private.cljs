@@ -175,10 +175,11 @@
          :on-change #(reset! filename (.. % -target -value))}]]]
      [:div.columns.is-centered>div.field.is-grounded.is-grouped.is-grouped-centered
       [:p.control
-       (if (empty? @(rf/subscribe [::subs/failed-http-result]))
+       (if (and (not= "" @url) (not= "" @filename))
+           ;; 
          [:button.button.is-info
           {:on-click
-           #(when (and (-> @url count zero? not) (-> @filename count zero? not))
+           #(when (and (not= "" @url) (not= "" @filename))
               (rf/dispatch-sync
                [::events/upload-sounds (lstorage/get-item! "raspihost")
                 @url
