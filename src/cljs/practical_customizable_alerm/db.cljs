@@ -9,5 +9,6 @@
    :viewing-setting "alarm"
    :raspihost ""
    :sounds []
+   :alarms #{}
    :indexed-db (r/atom {})
    })

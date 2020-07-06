@@ -56,3 +56,12 @@
  (fn [db]
    (:sounds db)))
 
+(re-frame/reg-sub
+ ::failed-http-result
+ (fn [db]
+   (:failed-http-result db)))
+
+(re-frame/reg-sub
+ ::alarms
+ (fn [db]
+   (:alarms db)))
