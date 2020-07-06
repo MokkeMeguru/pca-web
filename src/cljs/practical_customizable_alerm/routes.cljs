@@ -9,6 +9,7 @@
    [practical-customizable-alerm.views.home :as vhome]
    [practical-customizable-alerm.views.about :as vabout]
    [practical-customizable-alerm.views.shop :as vshop]
+    [practical-customizable-alerm.views.private :as vprivate]
    ))
 
 
@@ -24,9 +25,20 @@
      :view vabout/page
      :controllers
      [{:start (fn []
-                (.log js/console "enter about"))
-       }]
-     }]
+                (.log js/console "enter about"))}]}]
+   ["private/"
+    ["alarm"
+     {:name :routes/alarm
+      :view vprivate/page
+      :controllers
+      [{:start (fn []
+                 (rf/dispatch [::events/viewing-setting "alarm"]))}]}]
+    ["sound"
+     {:name :routes/sound
+      :view vprivate/page
+      :controllers
+      [{:start (fn []
+                 (rf/dispatch [::events/viewing-setting "sound"]))}]}]]
    ["shops/"
     ["model"
      {:name :routes/models-shop

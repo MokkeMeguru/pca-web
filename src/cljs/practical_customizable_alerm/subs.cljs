@@ -1,6 +1,7 @@
 (ns practical-customizable-alerm.subs
   (:require
-   [re-frame.core :as re-frame]))
+   [re-frame.core :as re-frame]
+   [practical-customizable-alerm.idb :as idb]))
 
 (re-frame/reg-sub
  :current-route
@@ -33,3 +34,25 @@
  ::viewing-shop
  (fn [db]
    (:viewing-shop db)))
+
+(re-frame/reg-sub
+ ::viewing-setting
+ (fn [db]
+   (:viewing-setting db)))
+
+(re-frame/reg-sub
+ ::indexed-db
+ (fn [db]
+   (:indexed-db db)))
+
+;; 
+(re-frame/reg-sub
+ ::raspihost
+ (fn [db]
+   (:raspihost db)))
+
+(re-frame/reg-sub
+ ::sounds
+ (fn [db]
+   (:sounds db)))
+

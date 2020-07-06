@@ -7,6 +7,7 @@
                  [thheller/shadow-cljs "2.9.3"]
                  [reagent "0.10.0"]
                  [re-frame "0.12.0"]
+                 [day8.re-frame/http-fx "v0.2.0"]
                  [day8.re-frame/tracing "0.5.5"]
                  [garden "1.3.10"]
                  [ns-tracker "0.4.0"]
@@ -20,6 +21,8 @@
             [lein-garden "0.3.0"]
             [lein-shell "0.5.0"]]
 
+  :npm [highlight.js "9.18.1"]
+  
   :min-lein-version "2.9.0"
 
   :jvm-opts ["-Xmx1G"]
@@ -51,7 +54,10 @@
                                :modules {:app {:init-fn practical-customizable-alerm.core/init
                                                :preloads [devtools.preload
                                                           day8.re-frame-10x.preload]}}
-                               :dev {:compiler-options {:closure-defines {re-frame.trace.trace-enabled? true
+                               :dev {:compiler-options {
+                                                        :rewrite-polyfills true
+                                                        :ouput-feature-set :es3
+                                                        :closure-defines {re-frame.trace.trace-enabled? true
                                                                           day8.re-frame.tracing.trace-enabled? true}}}
                                :release {:build-options
                                          {:ns-aliases

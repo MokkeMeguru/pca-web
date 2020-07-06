@@ -39,7 +39,7 @@
    {:font-size "calc(150% + 0.5vw)"}]
   [:.sec-title
    {:line-height 1.5
-    :border-bottom "solid 0.5rem gray"
+    :border-bottom "solid 0.5rem #78b771"
     :padding-right "5rem"}]
 
   [:.footer
@@ -70,24 +70,25 @@
     :margin-left  "auto"}]
   [:.navbar-item
    {:display "flex"
+    :fill "gray"
     :align-items "center"}]
 
   [:.start {:justify-content "flex-start"}]
   [:.center {:justify-content "flex-center"}]
   [:.end
-   {:justify-content "flex-end"
-    :margin-left "auto"}]
+   {:justify-content "flex-end"}]
 
   [:.link-button:hover
-   {:background-color "#9b9b9b"
-    :box-shadow "0px 8px 8px rgba(0, 0, 0, 0.05)"}]
+   {:background-color "#4f4c81"
+    :box-shadow "0px 8px 8px rgba(0, 0, 0, 0.05)"
+    :transform "scale(0.95)"}]
   [:.link-button ".link-button:hover::before" ".link-button:hover::after"
    {:transition "all 0.3s"}]
   [:.link-button
    ;;  Rectangle 2
    {:position "flex"
     ;; :width "279px"
-    :background "#575757"
+    :background "#7b5e90"
     ;; :border "1px solid #000000"
     :boxsizing "border-box"
     :box-shadow "0px 8px 8px rgba(0, 0, 0, 0.25)"
@@ -117,6 +118,9 @@
    {:max-height 0
     :overflow "hidden"
     :padding 0}]
+
+  [:.tabs
+   [:a    {:border "0"}]]
 
   (at-media {:screen true
              :max-width "800px"}
