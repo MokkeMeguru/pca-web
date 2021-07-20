@@ -12,7 +12,7 @@
 		"react-day-picker": "^7.4.8",
 		"react-dom": "16.13.0",
 		"react-highlight.js": "1.0.7",
-		"react-native": "^0.62.2",
+		"react-native": "^0.62.3",
 		"react-native-datepicker": "^1.7.2",
 		"react-plotly": "^1.0.0",
 		"react-tooltip": "^4.2.7",
